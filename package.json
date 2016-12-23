@@ -1,0 +1,15 @@
+{
+  "name": "matlab-socket",
+  "version": "0.0.1",
+  "description": "Communicate between Matlab and NodeJS using socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "yuthon",
+  "license": "ISC",
+  "dependencies": {
+    "net": "^1.0.2",
+    "socket.io-client": "^1.7.2"
+  }
+}
