@@ -31,7 +31,9 @@ while 1
         if strcmp(item_str.name, 'params')
             params = item_str.data;
             run sim_tank_2_param.m;
-            L20
+            sim_data = struct('type', 'params', 'status', 'success');
+            sim_data_json = savejson('', sim_data);
+            s.send(sim_data_json);
         end
         len = s.Q.size();
     end
