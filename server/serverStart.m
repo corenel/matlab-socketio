@@ -7,7 +7,6 @@ port=5000;
 s = server(host, port);
 s.Q.empty();
 s.receive();
-s.send('Maltab runs successfully!');
 len = 0;
 
 while 1
@@ -20,11 +19,13 @@ while 1
             message_json = savejson('', message);
             s.send(message_json);
         end
-        if strcmp(item_str.name, 'sim')
+        if strcmp(item_str.name, 'sim_tank_2')
             run sim_tank_2_param.m
             [time_stamp, L1, L2] = sim_tank_2(mdl,paramNameValStruct);
             sim_data = struct('type', 'chart', 'time', time_stamp, 'level_1', L1.data, 'level_2', L2.data);
             sim_data_json = savejson('', sim_data);
+            % fprintf('%s', sim_data_json);
+            % fprintf('----------');
             s.send(sim_data_json);
         end
         len = s.Q.size();

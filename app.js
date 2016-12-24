@@ -1,5 +1,6 @@
 let socket = require('socket.io-client')('http://localhost:1234/matlab');
 let Client = require('./server/Client')
+let mergedData = ''
 
 socket.on('connect', function () {
     console.log('Connected to socket.io server')
@@ -9,10 +10,17 @@ socket.on('connect', function () {
             data = data.toString('utf8')
             that.queue.push(data)
             console.log('[Matlab] ' + data)
-            if (data !== '') {
-                that.message = data
+            try {
+                mergedData += data
+                let dataObj = JSON.parse(mergedData)
+                socket.emit('fromMatlab', mergedData)
+                mergedData = ''
+                // console.log('ZERO!' + mergedData)
+            } catch (err) {
+                // console.log('BOOM!!')
+                // console.log(mergedData)
+                console.log(err)
             }
-            socket.emit('fromMatlab', data)
         })
     }
     let c = new Client('localhost', 5000)

@@ -4,7 +4,7 @@ function Client (host, port) {
     this.queue = []
     this.socket = new net.Socket()
     this.socket.connect(port, host, function () {
-        console.log('Connected')
+        console.log('Connected to matlab server')
     })
     this.queue = []
     this.message = ''
