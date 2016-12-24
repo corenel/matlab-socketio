@@ -1,8 +1,19 @@
-mdl                                  = 'Tank2';
-paramNameValStruct.SimulationMode    = 'normal';
-paramNameValStruct.AbsTol            = '1e-5';
-paramNameValStruct.StopTime          = '30';
-paramNameValStruct.SaveState         = 'on';
-paramNameValStruct.StateSaveName     = 'xout';
-paramNameValStruct.SaveOutput        = 'on';
-paramNameValStruct.OutputSaveName    = 'yout';
+    % Simulation parameters
+    mdl                                  = params.mdl.value;
+    paramNameValStruct.SimulationMode    = 'normal';
+    paramNameValStruct.AbsTol            = '1e-5';
+    paramNameValStruct.StopTime          = params.StopTime.value;
+    paramNameValStruct.SaveState         = 'on';
+    paramNameValStruct.StateSaveName     = 'xout';
+    paramNameValStruct.SaveOutput        = 'on';
+    paramNameValStruct.OutputSaveName    = 'yout';
+
+    % Model parameters
+    L10   = str2double(params.L10.value);
+    L20   = str2double(params.L20.value);
+    Kp_1  = str2double(params.Kp_1.value);
+    Ki_1  = str2double(params.Ki_1.value);
+    Kff_1 = str2double(params.Kff_1.value);
+    Kp_2  = str2double(params.Kp_2.value);
+    Ki_2  = str2double(params.Ki_2.value);
+    Kff_2 = str2double(params.Kff_2.value);
