@@ -15,14 +15,14 @@ while 1
         item = data(end);
         item_str = loadjson(item{1});
         if strcmp(item_str.name, 'repeat')
-            message = struct('name', 'Matlab', 'msg', item_str.msg);
+            message = struct('event', 'msg', 'name', 'Matlab', 'msg', item_str.msg);
             message_json = savejson('', message);
             s.send(message_json);
         end
         if strcmp(item_str.name, 'sim')
             run sim_tank_2_param.m;
             [time_stamp, L1, L2] = sim_tank_2(mdl,paramNameValStruct);
-            sim_data = struct('type', 'chart', 'time', time_stamp, 'level_1', L1.data, 'level_2', L2.data);
+            sim_data = struct('event', 'chart', 'time', time_stamp, 'level_1', L1.data, 'level_2', L2.data);
             sim_data_json = savejson('', sim_data);
             % fprintf('%s', sim_data_json);
             % fprintf('----------');
@@ -31,7 +31,7 @@ while 1
         if strcmp(item_str.name, 'params')
             params = item_str.data;
             run sim_tank_2_param.m;
-            sim_data = struct('type', 'params', 'status', 'success');
+            sim_data = struct('event', 'params', 'status', 'success');
             sim_data_json = savejson('', sim_data);
             s.send(sim_data_json);
         end
