@@ -1,5 +1,5 @@
 let socket = require('socket.io-client')('http://localhost:1234/matlab');
-let Client = require('./server/Client')
+let Client = require('./lib/server/Client.js')
 let mergedData = ''
 
 socket.on('connect', function () {

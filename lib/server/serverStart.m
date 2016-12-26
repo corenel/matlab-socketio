@@ -1,5 +1,5 @@
-addpath ./jsonlab/
-addpath ../models/
+addpath ./lib/jsonlab
+addpath ./models
 run setup_lab_tanks.m
 
 host='localhost';
